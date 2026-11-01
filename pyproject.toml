@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solar-field-twin"
+version = "1.0.0"
+description = "Reproducible hourly photovoltaic simulation and decision support"
+requires-python = ">=3.12"
+dependencies = [
+  "pvlib>=0.13,<0.17", "fastapi>=0.115,<1", "uvicorn>=0.32,<1",
+  "numpy>=2,<3", "pandas>=2.2,<3", "scipy>=1.14,<2",
+  "numpy-financial==1.0.0", "pydantic>=2.10,<3", "joblib>=1.4,<2",
+  "python-multipart>=0.0.20,<1", "httpx>=0.28,<1", "reportlab>=4.2,<5"
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10", "pypdf>=5,<7"]
+
+[tool.setuptools.packages.find]
+include = ["backend*"]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = ["."]

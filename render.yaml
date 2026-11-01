@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: behnamproject-arakpvpowerplant
+    runtime: docker
+    plan: free
+    region: frankfurt
+    branch: master
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeployTrigger: checksPass
+    envVars:
+      - key: SOLAR_PUBLIC
+        value: "1"
+      - key: SOLAR_WORKERS
+        value: "1"
+      - key: SOLAR_MEMORY_RUNS
+        value: "1"
+      - key: SOLAR_SESSION_SECRET
+        generateValue: true
+      - key: FORWARDED_ALLOW_IPS
+        value: "*"
+      - key: OPENBLAS_NUM_THREADS
+        value: "1"
+      - key: OMP_NUM_THREADS
+        value: "1"

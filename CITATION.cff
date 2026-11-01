@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, cite the software version and the scientific model references in docs/references.md."
+title: Solar Field Twin
+authors:
+  - name: Solar Field Twin contributors
+type: software
+version: 1.0.0
+date-released: 2026-11-01
+license: MIT
+abstract: Reproducible hourly photovoltaic simulation, interactive electrical topology and transparent engineering decision support.

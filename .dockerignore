@@ -1,0 +1,16 @@
+.git
+.venv
+frontend/node_modules
+frontend/dist
+data/cache
+data/runs
+data/public
+data/sessions
+outputs
+output
+tmp
+data/scenarios
+docs/screenshots/demo-frames
+.pytest_cache
+**/__pycache__
+frontend/test-results
