@@ -50,6 +50,8 @@ All thirteen navigation sections contain implemented functionality. Physical cal
 
 ![Solar-field interaction demonstration](docs/screenshots/field-demo.gif)
 
+![Individual module detail and mounting structure](docs/screenshots/panel-detail.png)
+
 ## Reproduce a calculation
 
 Windows:

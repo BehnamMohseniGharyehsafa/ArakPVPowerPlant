@@ -89,16 +89,14 @@ class SecurityBoundary(BaseHTTPMiddleware):
                         return JSONResponse(
                             {"detail": "Missing application request header"}, 403
                         )
-                    if path in {"/api/runs", "/api/weather/upload"}:
-                        generated = DATA / "sessions"
-                        total = (
-                            sum(
-                                p.stat().st_size
-                                for p in generated.rglob("*")
-                                if p.is_file()
-                            )
+                    if request.method != "DELETE":
+                        # Uploaded weather also occupies disk outside session markers.
+                        total = sum(
+                            p.stat().st_size
+                            for generated in (DATA / "sessions", DATA / "cache")
                             if generated.exists()
-                            else 0
+                            for p in generated.rglob("*")
+                            if p.is_file()
                         )
                         if total > 512 * 1024 * 1024:
                             return JSONResponse(

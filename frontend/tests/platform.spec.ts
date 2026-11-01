@@ -124,4 +124,8 @@ test('3D module raycasting opens the modelled equipment inspector', async ({ pag
   expect(selected).toBe(true);
   await expect(page.locator('.inspection h2')).toHaveText(/^M-\d{5}$/);
   await expect(page.getByText('W DC · allocated', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Focus camera', exact: true }).click();
+  await page.waitForTimeout(1000); // Capture the completed damped camera transition.
+  await page.getByRole('button', { name: 'Close inspector' }).click();
+  await page.locator('.solar-field').screenshot({ path: '../docs/screenshots/panel-detail.png' });
 });

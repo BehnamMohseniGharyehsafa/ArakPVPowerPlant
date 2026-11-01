@@ -36,6 +36,17 @@ jobs:
       - run: python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 > /tmp/solar-api.log 2>&1 &
       - run: npm run test:e2e
         working-directory: frontend
+      - name: Verify the actual production container serves its frontend
+        run: |
+          docker build -t solar-twin .
+          docker run -d --name solar-smoke -p 127.0.0.1:8001:8000 -e PORT=8000 -e SOLAR_PUBLIC=1 solar-twin
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8001/api/health; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://127.0.0.1:8001/ | grep 'id="root"'
+          curl --fail --silent http://127.0.0.1:8001/report-actions.js
+          docker logs solar-smoke
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: failure()
         with:

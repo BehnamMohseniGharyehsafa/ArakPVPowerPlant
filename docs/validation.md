@@ -54,7 +54,7 @@ Run the checks from the README. API tests require local event-loop socket access
 
 ## PDF and deployment checks
 
-The direct PDF report was generated from the reference Run with completed diagnostics, cleaning and a 20-sample uncertainty demonstration. All pages were rendered with Poppler and visually inspected for clipping, tables, chart labels, references and page breaks. Docker Compose configuration is validated by `docker compose config --quiet`. The installed Docker client could not connect to a running Docker Desktop Linux engine, so a container build/run was not verified locally. GitHub Actions is supplied but has not been run on a remote repository in this session.
+The direct PDF report was generated from the reference Run with completed diagnostics, cleaning and a 20-sample uncertainty demonstration. All pages were rendered with Poppler and visually inspected for clipping, tables, chart labels, references and page breaks. Docker Compose configuration is validated by `docker compose config --quiet`. The local Docker daemon is unavailable; Render builds the production image remotely. [GitHub Actions](https://github.com/BehnamMohseniGharyehsafa/ArakPVPowerPlant/actions) runs the numerical and browser suites on Linux and now builds and starts the actual Docker image, requests its homepage and verifies the external report-print asset. The container startup explicitly imports the source checkout so that its sibling frontend files are served.
 
 ## What these checks do not establish
 

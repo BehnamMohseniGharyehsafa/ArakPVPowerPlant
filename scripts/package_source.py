@@ -36,4 +36,5 @@ with ZipFile(destination, "w", ZIP_DEFLATED) as archive:
             ):
                 continue
             archive.write(path, Path("solar-field-twin") / path.relative_to(ROOT))
+    archive.write(ROOT / "data" / "README.md", "solar-field-twin/data/README.md")
 print(destination)
