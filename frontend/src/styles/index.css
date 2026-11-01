@@ -1000,9 +1000,59 @@ small {
 }
 .timeline-top {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+}
+.timeline-heading {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+}
+.site-clock-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 9px;
+  border: 1px solid #d8e7e7;
+  border-radius: 6px;
+  color: #39777a;
+  font-size: 10px;
+  white-space: nowrap;
+  background: #f7fbfb;
+}
+.site-clock-button:hover:not(:disabled),
+.site-clock-button.active {
+  color: #126b66;
+  border-color: #8bc9ba;
+  background: #e8f6ef;
+}
+.site-clock-status {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3px 8px;
+  margin-top: 9px;
+  padding: 6px 9px;
+  border-radius: 5px;
+  background: #f0f8f4;
+  color: #4c7974;
+  font-size: 9px;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+.site-clock-status strong {
+  margin-right: 4px;
+}
+.site-clock-source {
+  color: #6d8987;
+}
+@media (max-width: 380px) {
+  .scenario-bar select {
+    max-width: 125px !important;
+  }
 }
 .timeline-label {
   display: flex;
@@ -1022,6 +1072,9 @@ small {
 }
 .timeline-inputs {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-left: auto;
   gap: 10px;
   align-items: center;
 }

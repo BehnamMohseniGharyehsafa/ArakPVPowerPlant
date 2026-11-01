@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { api, pollJob } from '../services/api';
+import { arakTmyTime } from '../services/siteTime';
 import type {
   Page,
   Scenario,
@@ -19,6 +20,7 @@ interface TwinStore {
   equipment: Equipment | null;
   bootstrap: any;
   hour: number;
+  timeMode: 'manual' | 'arak';
   selection: Selection | null;
   heatmap: Heatmap;
   camera: { mode: CameraMode; nonce: number };
@@ -31,6 +33,7 @@ interface TwinStore {
   analyse: (kind: string, options?: any) => Promise<void>;
   save: () => Promise<void>;
   setHour: (hour: number) => void;
+  followArakTime: (instant?: Date) => void;
   loadEquipment: () => Promise<void>;
   focus: (selection: Selection) => void;
 }
@@ -46,6 +49,7 @@ export const useTwin = create<TwinStore>((set, get) => ({
   equipment: null,
   bootstrap: null,
   hour: 4116,
+  timeMode: 'manual',
   selection: null,
   heatmap: 'natural',
   camera: { mode: 'isometric', nonce: 0 },
@@ -76,6 +80,7 @@ export const useTwin = create<TwinStore>((set, get) => ({
       set({
         run,
         columns: series.columns,
+        equipment: null,
         selection: null,
         job: null,
         compare: [
@@ -119,8 +124,16 @@ export const useTwin = create<TwinStore>((set, get) => ({
     }
   },
   setHour: (hour) => {
-    set({ hour: Math.max(0, Math.min(8759, Math.round(hour))) });
+    const next = Math.max(0, Math.min(8759, Math.round(hour)));
+    set({ hour: next, timeMode: 'manual', ...(next !== get().hour ? { equipment: null } : {}) });
     void get().loadEquipment();
+  },
+  followArakTime: (instant = new Date()) => {
+    const hour = arakTmyTime(instant).hourOfYear;
+    if (hour !== get().hour) {
+      set({ hour, timeMode: 'arak', equipment: null });
+      void get().loadEquipment();
+    } else if (get().timeMode !== 'arak') set({ timeMode: 'arak' });
   },
   loadEquipment: async () => {
     const run = get().run;
