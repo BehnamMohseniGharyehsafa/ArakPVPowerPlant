@@ -1,3 +1,9 @@
+<div align="center">
+  <strong>Developer: Behnam Mohseni Gharyehsafa</strong><br>
+  PhD in Electronic Engineering<br>
+  <a href="mailto:Mohseni.Gharyehsafa.Behnam@gmail.com">Mohseni.Gharyehsafa.Behnam@gmail.com</a>
+</div>
+
 # Solar Field Twin
 
 A physics-based photovoltaic simulation and decision-support workspace: **Python calculations, an interactive React/Three.js solar field, and complete hourly numerical exports**.
