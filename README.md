@@ -14,7 +14,11 @@ The reference installation is an illustrative 3.016 MWp array in Markazi Provinc
 
 ### [🕒 Simulate at Arak's current local time](https://behnamproject-arakpvpowerplant.onrender.com/?clock=arak)
 
-Click the clock link above or the **Arak clock** button in the application timeline. It uses `Asia/Tehran` to select the current Gregorian month, day and hour from the Arak TMY, independently of your computer's time zone. The clock keeps following Arak time and changes the selected TMY record at each local hour. The displayed weather and power remain **hourly TMY simulation values**, rather than live observations. Manual timeline controls or Play exit clock mode. The 365-day dataset maps 29 February to 28 February at the same hour. This mode is available for the Arak reference weather; uploaded weather uses the manual timeline.
+The **analog Arak clock is immediately to the left of Run simulation**. Its hour, minute and second hands and digital readout always show the current time in Arak, including while you explore other simulation hours. Click the clock to follow site time; its green indicator confirms when this mode is active.
+
+[![Analog Arak clock beside Run simulation — open the live clock](docs/screenshots/arak-clock.png)](https://behnamproject-arakpvpowerplant.onrender.com/?clock=arak)
+
+The image above is a screenshot; open the application for the ticking clock. It uses `Asia/Tehran` to select the current Gregorian month, day and hour from the Arak TMY, independently of your computer's time zone. The selected TMY record changes at each local hour. The displayed weather and power remain **hourly TMY simulation values**, rather than live observations. Manual timeline controls or Play exit clock mode. The 365-day dataset maps 29 February to 28 February at the same hour. This mode is available for the Arak reference weather; uploaded weather uses the manual timeline.
 
 The symbolic site uses original procedural pale limestone-grey and beige soil, dry relief, tracks, an asphalt road, sparse buildings and an orchard, inspired by the supplied regional reference. It is not a surveyed plant map. Individual panels show half-cell patterns, aluminium frames, mounting rails and supports. Smooth camera controls, equipment focus, on-demand drawing, instancing, selectable detail and cached hourly snapshots keep navigation independent from annual calculations.
 
