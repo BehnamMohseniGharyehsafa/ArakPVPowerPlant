@@ -83,6 +83,13 @@ export default function App() {
   const Current = pages[page];
   return (
     <div className="app-shell">
+      <header className="developer-credit" aria-label="Developer information">
+        <strong>Developer: Behnam Mohseni Gharyehsafa</strong>
+        <span>PhD in Electronic Engineering</span>
+        <a href="mailto:Mohseni.Gharyehsafa.Behnam@gmail.com">
+          Mohseni.Gharyehsafa.Behnam@gmail.com
+        </a>
+      </header>
       <aside className={'sidebar ' + (mobile ? 'mobile-open' : '')}>
         <a
           className="brand"
