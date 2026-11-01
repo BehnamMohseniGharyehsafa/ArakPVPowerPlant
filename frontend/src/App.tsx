@@ -62,6 +62,8 @@ export default function App() {
   const [config, setConfig] = useState(false);
   const [mobile, setMobile] = useState(false);
   useEffect(() => {
+    if (new URLSearchParams(window.location.search).get('clock') === 'arak')
+      useTwin.getState().followArakTime();
     void init();
   }, []);
   const dirty = run && draft && JSON.stringify(draft) !== JSON.stringify(run.metadata.scenario);

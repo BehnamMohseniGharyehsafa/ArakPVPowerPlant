@@ -4,7 +4,11 @@ import { NumberInput } from './UI';
 import { Timeline } from './Timeline';
 import { useTwin } from '../state/store';
 import { topology } from '../solar-field/geometry';
-afterEach(cleanup);
+const initialState = useTwin.getState();
+afterEach(() => {
+  cleanup();
+  useTwin.setState(initialState, true);
+});
 describe('engineering controls', () => {
   it('passes edited numeric assumptions to the configuration owner', () => {
     const update = vi.fn();
