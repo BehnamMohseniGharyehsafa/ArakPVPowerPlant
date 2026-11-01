@@ -430,7 +430,7 @@ small {
   color: #0c6069;
 }
 .scenario-bar {
-  height: 62px;
+  min-height: 96px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -438,11 +438,130 @@ small {
   border-bottom: 1px solid var(--line);
   background: #fcfdfe;
   gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .scenario-bar > div {
   display: flex;
   align-items: center;
   gap: 12px;
+}
+.scenario-bar > div:first-child {
+  min-width: 0;
+  flex-wrap: wrap;
+}
+.scenario-bar .simulation-actions {
+  margin-left: auto;
+  flex-shrink: 0;
+  gap: 16px;
+}
+.simulation-actions > .button {
+  white-space: nowrap;
+}
+.arak-clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 13px 7px 9px;
+  border: 1px solid #e4dcc9;
+  border-radius: 13px;
+  background: linear-gradient(120deg, #fffaf0, #ffffff 80%);
+  color: #1b5458;
+  text-align: left;
+  box-shadow: 0 3px 12px #263f4808, inset 0 1px 0 #fff;
+  transition: border-color 180ms, box-shadow 180ms, background 180ms;
+}
+.arak-clock:hover:not(:disabled) {
+  border-color: #bb9b59;
+  box-shadow: 0 4px 16px #876b3420;
+}
+.arak-clock:focus-visible {
+  outline: 3px solid #3e9792;
+  outline-offset: 3px;
+}
+.arak-clock.active {
+  border-color: #8fc5b5;
+  background: linear-gradient(120deg, #f8f7eb, #effaf6);
+}
+.arak-clock-face {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 3px #755b3220);
+}
+.arak-clock-numerals {
+  font-family: Georgia, serif;
+  font-size: 10px;
+  font-weight: 600;
+}
+.arak-clock-dial-label {
+  fill: #9a906e;
+  font-size: 4px;
+  letter-spacing: 1.5px;
+}
+.arak-clock-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  white-space: nowrap;
+}
+.arak-clock-location {
+  font-size: 8px;
+  letter-spacing: 1.4px;
+  font-weight: 700;
+}
+.arak-clock-location > span {
+  color: #be9c58;
+  margin: 0 2px;
+}
+.arak-clock-copy > time {
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 550;
+  letter-spacing: 0.5px;
+  font-variant-numeric: tabular-nums;
+}
+.arak-clock-mode {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px;
+  color: #7d8a87;
+}
+.arak-clock-indicator {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #b1bcb9;
+}
+.arak-clock.active .arak-clock-mode {
+  color: #2c7b68;
+}
+.arak-clock.active .arak-clock-indicator {
+  background: #2b9f7d;
+  box-shadow: 0 0 0 3px #2b9f7d12;
+}
+@media (max-width: 700px) {
+  .scenario-bar > div:first-child {
+    width: 100%;
+  }
+  .scenario-bar .simulation-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .arak-clock {
+    gap: 9px;
+    padding: 6px 9px 6px 7px;
+  }
+  .arak-clock-face {
+    width: 58px;
+    height: 58px;
+  }
+  .arak-clock-copy > time {
+    font-size: 18px;
+  }
 }
 .eyebrow {
   font-size: 8px;
@@ -1010,24 +1129,6 @@ small {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px 16px;
-}
-.site-clock-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 9px;
-  border: 1px solid #d8e7e7;
-  border-radius: 6px;
-  color: #39777a;
-  font-size: 10px;
-  white-space: nowrap;
-  background: #f7fbfb;
-}
-.site-clock-button:hover:not(:disabled),
-.site-clock-button.active {
-  color: #126b66;
-  border-color: #8bc9ba;
-  background: #e8f6ef;
 }
 .site-clock-status {
   display: flex;

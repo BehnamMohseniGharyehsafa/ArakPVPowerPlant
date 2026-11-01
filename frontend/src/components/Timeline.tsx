@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Play, Pause, ChevronLeft, ChevronRight, Sun, Clock } from 'lucide-react';
+import { Play, Pause, ChevronLeft, ChevronRight, Sun } from 'lucide-react';
 import { useTwin } from '../state/store';
 import { arakTmyTime, TMY_YEAR } from '../services/siteTime';
 
@@ -58,29 +58,6 @@ export function Timeline() {
             <strong>Reference-year timeline</strong>
             <span>Hourly · local standard time</span>
           </div>
-          <button
-            className={'site-clock-button ' + (timeMode === 'arak' ? 'active' : '')}
-            aria-label="Use Arak local time"
-            aria-pressed={timeMode === 'arak'}
-            disabled={!supportsArakClock}
-            title={
-              supportsArakClock
-                ? 'Follow the current date and hour in Arak using TMY values'
-                : 'Arak clock requires the Arak reference weather'
-            }
-            onClick={() => {
-              setPlaying(false);
-              if (timeMode === 'arak') set({ timeMode: 'manual' });
-              else {
-                const instant = new Date();
-                setNow(instant);
-                followArakTime(instant);
-              }
-            }}
-          >
-            <Clock size={15} />
-            {timeMode === 'arak' ? 'Following Arak' : 'Arak clock'}
-          </button>
         </div>
         <div className="timeline-inputs">
           <label>

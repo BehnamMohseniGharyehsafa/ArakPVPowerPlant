@@ -29,6 +29,7 @@ import type { Page } from './types';
 import { api } from './services/api';
 import { fmt } from './components/UI';
 import { Timeline } from './components/Timeline';
+import { ArakClock } from './components/ArakClock';
 import Configuration from './components/Configuration';
 import Inspection from './components/Inspection';
 import Overview from './pages/Overview';
@@ -218,13 +219,16 @@ export default function App() {
                   : 'Preparing scientific engine'}
             </span>
           </div>
-          <button
-            className="button primary small"
-            disabled={!!job || !draft}
-            onClick={() => void simulate()}
-          >
-            {job ? <LoaderCircle size={14} className="spin" /> : <Play size={14} />}Run simulation
-          </button>
+          <div className="simulation-actions">
+            <ArakClock />
+            <button
+              className="button primary small"
+              disabled={!!job || !draft}
+              onClick={() => void simulate()}
+            >
+              {job ? <LoaderCircle size={14} className="spin" /> : <Play size={14} />}Run simulation
+            </button>
+          </div>
         </div>
         {error && (
           <div className="error-banner" role="alert">
