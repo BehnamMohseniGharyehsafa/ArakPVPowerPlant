@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-test = ["pytest>=8,<10", "pypdf>=5,<7"]
+test = ["pytest>=8,<10", "pypdf>=5,<8"]
 
 [tool.setuptools.packages.find]
 include = ["backend*"]
